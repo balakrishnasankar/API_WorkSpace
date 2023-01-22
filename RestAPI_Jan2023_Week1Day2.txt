@@ -1,0 +1,118 @@
+Today's Agenda:
+===============
+
+PostMan Introduction:
+=====================
+
+Postman --Tool to test API's. Manual Testing and Semi-Automation of API's.
+
+why postman is Semi Automation:
+================================
+1) cannot Generate reports directly from Postman tool
+2) No direct integration for CI/CD
+newman is a commandline for postman
+3) Postman --only json and CSV data files are supported
+Uses Javascript
+4) Unified UI Automation is not possible
+
+other tools used to test API:
+1) Postwoman 2) Insomania
+
+Collections --Package under which all requests will be bundled and grouped together
+
+
+Rest API documentation in Service Now
+=====================================
+
+Access the API Documentation
+=============================
+1) Login to your Developer Instance
+2) Filter Navigator type "explorer"
+3) Click on Rest API Explorer menu
+4) Click the required API and select table as "incident"
+5)  Copy the endpoint
+https://dev138883.service-now.com/api/now/table/{tableName}
+https://dev138883.service-now.com/api/now/table/incident
+https://dev138883.service-now.com --Server
+api/now/table/incident--resource
+
+
+
+
+Getting Started with API's:
+===========================
+
+1) Get Incidents:
+=================
+1) Get all Incidents
+a) https://dev138883.service-now.com/api/now/table/incident
+b) Authorization - username-admin, password-qa4@7NHzLC@g
+c) Send Request (No Request body for Get)
+d) validate Response -- 200 (For Get)
+
+Steps in Postman:
+===================
+1) Create a Collection and Add Authorization (type as basic)
+2) Create Request for Get and add the endpoint
+3) Ensure that Authorization is from collection for the request
+4) Initiate the request by clicking send button
+5) Validate the status code -- in Tests tab of postman add the snippet for validating status code
+6) verify the test result in "Test Results" in the response
+(change_request)
+
+
+
+2) Get Incidents with Query params
+
+Path param and Query param
+
+Query Param--Inorder to filter the response,differs from application to application
+
+Path param--
+
+https://dev138883.service-now.com/---Server
+api/now/table/ --
+incident --Path parameter
+?sysparm_fields=short_description --Query parameter
+
+
+
+
+2) Create Incidents:
+=================
+1) Create incident
+
+Body -- Select Raw and Select json as option
+Status code for Post should be 201
+
+1) Get All change request with Query Param
+2) Extract the value of number after creating the change requet response
+
+Extract Values from response:
+
+1) Saving response in test tab
+var response=pm.response.json();
+2) Traverse through the response extract value
+a) Copy the response
+b) go to online jsonpath finder "https://jsonpathfinder.com/"
+c) Copy the response
+d) Click on the value to copy the json path
+var resp=pm.response.json();
+console.log(resp.result.sys_id)
+
+55b381ad47a861106aef249bd36d435f
+55b381ad47a861106aef249bd36d435f
+
+2) Create incident with query Params
+
+
+3) Update Incident
+
+Put
+
+
+4) delete incident 
+
+
+Request in Json 
+Response in XML
